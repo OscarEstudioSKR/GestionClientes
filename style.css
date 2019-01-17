@@ -1,0 +1,52 @@
+:root{
+    --color1: #262626;
+    --color2: #ebebeb;
+    --color3: #454a4f;
+    --color4: #30373f;
+}
+body{
+    width : 100vw;
+    height : 100vh;
+    background:rgb(233, 233, 233);
+    margin: 0px;
+    padding: 0px;
+
+    display:flex;
+    flex-flow: row wrap;
+}
+
+header{
+    background:var(--color1);
+    width : 100%;
+    height : 10%;
+}
+.section-table{
+    background:var(--color3);
+    width : 50%;
+    height : 84%;
+}
+
+.section-bigRight{
+    width : 50%;
+    height : 84%;
+
+    display:flex;
+    flex-flow: row wrap;
+}
+
+.section-set{
+    background:var(--color4);
+    width : 100%;
+    height : 70%;
+}
+.section-info{
+    background:var(--color2);
+    width : 100%;
+    height : 30%;
+}
+
+footer{
+    background:var(--color1);
+    width : 100%;
+    height : 6%;
+}
