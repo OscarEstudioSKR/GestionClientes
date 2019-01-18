@@ -29,7 +29,7 @@ function nuevoCliente(){
     cliente = a;
     cambiarVistaCliente();
     añadirFila();
-    refresh();
+
 }
 
 function cambiarVistaCliente(){
@@ -43,6 +43,7 @@ function cambiarVistaCliente(){
     document.getElementById("cliente-sexo").placeholder = cliente.sexo;
     document.getElementById("cliente-tipo").placeholder = cliente.tipo;
     document.getElementById("cliente-comentario").placeholder = cliente.comentario;
+    refresh();
   
 }
 function refreshTabla(){
@@ -59,9 +60,10 @@ function añadirFila(){
 
     var nuevaFila = document.createElement("element");
     nuevaFila.setAttribute("id","cliente-fila");
+    nuevaFila.setAttribute("name","elemento-fila");
     
     var nuevoBloque1 = document.createElement("bloque");
-    nuevoBloque1.setAttribute("class","seccion-p");
+    nuevoBloque1.setAttribute("class","seccion-p id");
     nuevoBloque1.innerText = clientesCartera.length-1;
     nuevaFila.appendChild(nuevoBloque1);
 
@@ -105,7 +107,7 @@ function añadirFila(){
     var nuevoBotonOpt = document.createElement("button");
     nuevoBotonOpt.setAttribute("type","submit");
     nuevoBotonOpt.setAttribute("class","boton-opciones");
-    nuevoBotonOpt.setAttribute("onclick","options()");
+    nuevoBotonOpt.setAttribute("onclick","options("+cliente.id+")");
     nuevoBloque6.appendChild(nuevoBotonOpt);
     
 
@@ -120,8 +122,8 @@ function moveDown(){
 
 }
 
-function options(){
-    cliente=clientesCartera[0];
+function options(id){
+    cliente=clientesCartera[id];
     cambiarVistaCliente();
 }
 
@@ -134,7 +136,22 @@ function abrirInfo() {
 }
 
 function eliminarCliente() {
-    delete clientesCartera[cliente.id];
+
+
+    let filas = document.getElementsByName("elemento-fila");
+
+    for (let i = 0; i < filas.length; i++) {
+        if(filas[i].firstChild.innerText == cliente.id){
+
+            document.getElementById("tabla-clientes").removeChild(filas[i]);            
+        }
+    }
+
+    clientesCartera.splice(cliente.id,1);
+    cerrarInfo();
+    refresh();
+
+
 }
 
 function guardarCliente() {
