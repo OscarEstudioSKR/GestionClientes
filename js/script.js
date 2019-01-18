@@ -23,6 +23,7 @@ function nuevoCliente(){
     refresh();
     cliente = a;
     cambiarVistaCliente();
+    añadirFila();
 }
 
 function cambiarVistaCliente(){
@@ -36,4 +37,45 @@ function cambiarVistaCliente(){
     document.getElementById("cliente-tipo").placeholder = cliente.tipo;
     document.getElementById("cliente-comentario").placeholder = cliente.comentario;
   
+}
+
+function añadirFila(){
+    let tabla = document.getElementById("tabla-clientes");
+
+    var nuevaFila = document.createElement("element");
+    nuevaFila.setAttribute("id","cliente-fila");
+    
+    var nuevoBloque1 = document.createElement("bloque");
+    nuevoBloque1.setAttribute("class","seccion-p");
+    nuevoBloque1.innerText = clientesCartera.length;
+    nuevaFila.appendChild(nuevoBloque1);
+
+    var nuevoBloque2 = document.createElement("bloque");
+    nuevoBloque2.setAttribute("class","seccion-p");
+    nuevoBloque2.innerText = cliente.tipo;
+    nuevaFila.appendChild(nuevoBloque2);
+
+    var nuevoBloque3 = document.createElement("bloque");
+    nuevoBloque3.setAttribute("class","seccion-g");
+    nuevoBloque3.innerText = cliente.nombre;
+    nuevaFila.appendChild(nuevoBloque3);
+
+    var nuevoBloque4 = document.createElement("bloque");
+    nuevoBloque4.setAttribute("class","seccion-m");
+    nuevoBloque4.innerText = cliente.correo;
+    nuevaFila.appendChild(nuevoBloque4);
+
+    var nuevoBloque5 = document.createElement("bloque");
+    nuevoBloque5.setAttribute("class","seccion-p");
+
+    nuevaFila.appendChild(nuevoBloque5);
+
+    var nuevoBloque6 = document.createElement("bloque");
+    nuevoBloque6.setAttribute("class","seccion-p");
+
+    nuevaFila.appendChild(nuevoBloque6);
+    
+
+    tabla.appendChild(nuevaFila);
+
 }
