@@ -65,11 +65,24 @@ function añadirFila(){
     nuevoBloque4.innerText = cliente.correo;
     nuevaFila.appendChild(nuevoBloque4);
 
+    //Botones////////////////////////////
     var nuevoBloque5 = document.createElement("bloque");
-    nuevoBloque5.setAttribute("class","seccion-p");
-
+    nuevoBloque5.setAttribute("class","seccion-p botones-mover");
     nuevaFila.appendChild(nuevoBloque5);
+        //Boton1
+    var nuevoBoton1 = document.createElement("button");
+    nuevoBoton1.setAttribute("type","submit");
+    nuevoBoton1.setAttribute("class","ima-up");
+    nuevoBoton1.setAttribute("onclick","moveUp");
+    nuevoBloque5.appendChild(nuevoBoton1);
+        //Boton2
+    var nuevoBoton1 = document.createElement("button");
+    nuevoBoton1.setAttribute("type","submit");
+    nuevoBoton1.setAttribute("class","ima-down");
+    nuevoBoton1.setAttribute("onclick","moveDown");
+    nuevoBloque5.appendChild(nuevoBoton1);
 
+    //Options
     var nuevoBloque6 = document.createElement("bloque");
     nuevoBloque6.setAttribute("class","seccion-p");
 
@@ -77,5 +90,12 @@ function añadirFila(){
     
 
     tabla.appendChild(nuevaFila);
+
+}
+
+function moveUp(){
+    
+}
+function moveDown(){
 
 }
