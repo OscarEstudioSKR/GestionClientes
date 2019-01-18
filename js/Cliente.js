@@ -1,7 +1,8 @@
 'use strict';
 class Cliente {
 
-    constructor(tipo,nombre,correo,telefono,ciudad,edad,sexo,fechaLlegada,comentario){
+    constructor(id,tipo,nombre,correo,telefono,ciudad,edad,sexo,fechaLlegada,comentario){
+        this.id=id;
         this.tipo=tipo;
         this.nombre=nombre;
         this.correo=correo;

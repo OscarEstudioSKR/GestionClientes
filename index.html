@@ -19,7 +19,7 @@
     <div class="section-table" id="tabla-clientes">
         <nav-tabla>
             <h3 style="color:rgb(114, 116, 116); margin-left:5px;">Tabla de clientes</h3>
-            <button class="boton-nuevo" type="submit" onclick="nuevoCliente();">NUEVO</button>
+            <button class="boton-nuevo" onclick="nuevoCliente();">NUEVO</button>
         </nav-tabla>
         <element> <!-- Tabla de nombres -->
             <bloque class="seccion-p" id="tabla-nombres">Id</bloque>
@@ -41,7 +41,7 @@
                 <button type="submit" class="ima-down" onclick="moveDown();"></button>  
             </bloque>
             <bloque class="seccion-p">
-                <button type="submit" class="boton-opciones" onclick=""></button>
+                <button type="submit" class="boton-opciones" onclick="options()"></button>
             </bloque>
     
         </element> -->
@@ -51,7 +51,7 @@
 
     <div class="section-bigRight">
         <div class="section-set">
-            <form action="" class="contenedor" id="vista-cliente">
+            <form class="contenedor" id="vista-cliente">
                 <espacio class="espacio-1">
                     <div class="imagen-cliente"></div>
                     <div class="texto-base">
@@ -82,15 +82,19 @@
                     <textarea  type="text" class="caja-comentario" placeholder="Comentario" id="cliente-comentario"></textarea>
                 </espacio>
                 <espacio class="espacio-4">
-                    <button  class="boton-set" type="submit">Eliminar</button>
-                    <button  class="boton-set" type="submit" onclick="">Cerrar</button>
-                    <button  class="boton-set" type="submit">Guardar</button>
+                    <button  type="button" class="boton-set" onclick="eliminarCliente()">Eliminar</button>
+                    <button  type="button" class="boton-set" onclick="cerrarInfo()">Cerrar</button>
+                    <button  type="button" class="boton-set" onclick="guardarCliente()">Guardar</button>
                 </espacio>
             </form>
         </div>
 
         <div class="section-info">
-            <print>Clientes: <n id="num-clientes">0</n></print>
+            <print>Clientes: 
+                <n id="num-clientes">0</n>
+                <br>Id: 
+                <n id="cliente-id">0</n>
+            </print>
         </div>
     </div>
 

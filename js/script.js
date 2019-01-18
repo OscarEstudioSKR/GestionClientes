@@ -1,13 +1,17 @@
 'use strict';
 //Array con todos los objetos cliente
+var cliente = new Cliente(0,"regular","sin nombre","correo@web.com", 666666666,"sin ciudad",99,"sin sexo","Hoy","sin comentarios");
 var clientesCartera = [];
-var cliente;
+
+
 
 
 
 
 (function(){
+    nuevoCliente();
     refresh();
+    //refreshTabla();
 })();
 
 
@@ -15,18 +19,21 @@ var cliente;
 function refresh(){
     //Numero de clientes
     document.getElementById("num-clientes").innerText = clientesCartera.length;
+    document.getElementById("cliente-id").innerText = cliente.id;
+    
 }
 
 function nuevoCliente(){
-    let a = new Cliente("regular","sin nombre","correo@web.com", 666666666,"sin ciudad",99,"sin sexo","Hoy","sin comentarios");
+    let a = new Cliente(clientesCartera.length,"regular","sin nombre","correo@web.com", 666666666,"sin ciudad",99,"sin sexo","Hoy","sin comentarios");
     clientesCartera.push(a);
-    refresh();
     cliente = a;
     cambiarVistaCliente();
     añadirFila();
+    refresh();
 }
 
 function cambiarVistaCliente(){
+    abrirInfo();
     document.getElementById("cliente-nombre").innerText = cliente.nombre;
     document.getElementById("cliente-fecha").innerText = cliente.fechaLlegada;
     document.getElementById("cliente-telefono").placeholder = cliente.telefono;
@@ -38,7 +45,15 @@ function cambiarVistaCliente(){
     document.getElementById("cliente-comentario").placeholder = cliente.comentario;
   
 }
-
+function refreshTabla(){
+    for(let i=0; i<clientesCartera.length;i++){
+        document.getElementById("cliente-fila").delete;
+    }
+    for(let i=0; i<clientesCartera.length;i++){
+        cliente = clientesCartera[i];
+        añadirFila();
+    }
+}
 function añadirFila(){
     let tabla = document.getElementById("tabla-clientes");
 
@@ -47,7 +62,7 @@ function añadirFila(){
     
     var nuevoBloque1 = document.createElement("bloque");
     nuevoBloque1.setAttribute("class","seccion-p");
-    nuevoBloque1.innerText = clientesCartera.length;
+    nuevoBloque1.innerText = clientesCartera.length-1;
     nuevaFila.appendChild(nuevoBloque1);
 
     var nuevoBloque2 = document.createElement("bloque");
@@ -90,7 +105,7 @@ function añadirFila(){
     var nuevoBotonOpt = document.createElement("button");
     nuevoBotonOpt.setAttribute("type","submit");
     nuevoBotonOpt.setAttribute("class","boton-opciones");
-    nuevoBotonOpt.setAttribute("onclick","");
+    nuevoBotonOpt.setAttribute("onclick","options()");
     nuevoBloque6.appendChild(nuevoBotonOpt);
     
 
@@ -103,4 +118,36 @@ function moveUp(){
 }
 function moveDown(){
 
+}
+
+function options(){
+    cliente=clientesCartera[0];
+    cambiarVistaCliente();
+}
+
+
+function cerrarInfo() {
+    document.getElementById("vista-cliente").style.display="none";
+}
+function abrirInfo() {
+    document.getElementById("vista-cliente").style.display="block";
+}
+
+function eliminarCliente() {
+    delete clientesCartera[cliente.id];
+}
+
+function guardarCliente() {
+     
+    cliente.nombre = document.getElementById("cliente-nombre").innerText;
+
+    cliente.telefono = document.getElementById("cliente-telefono").placeholder;
+    cliente.ciudad = document.getElementById("cliente-ciudad").placeholder;
+    cliente.edad = document.getElementById("cliente-edad").placeholder;
+    cliente.correo = document.getElementById("cliente-correo").placeholder;
+    cliente.sexo = document.getElementById("cliente-sexo").placeholder;
+    cliente.tipo = document.getElementById("cliente-tipo").placeholder;
+    cliente.comentario = document.getElementById("cliente-comentario").placeholder;
+
+    refresh();
 }
