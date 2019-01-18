@@ -1,7 +1,7 @@
+'use strict';
+class Cliente {
 
-class Cliente{
-    constructor(id, tipo,nombre,correo,telefono,ciudad,edad,sexo,tipo,fechaLlegada){
-        this.id = id;
+    constructor(tipo,nombre,correo,telefono,ciudad,edad,sexo,fechaLlegada){
         this.tipo=tipo;
         this.nombre=nombre;
         this.correo=correo;
@@ -10,6 +10,7 @@ class Cliente{
         this.edad = edad;
         this.sexo = sexo;
         this.fechaLlegada = fechaLlegada;
+        
     }
     
 }

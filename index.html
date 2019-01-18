@@ -19,7 +19,7 @@
     <div class="section-table">
         <nav-tabla>
             <h3 style="color:rgb(114, 116, 116); margin-left:5px;">Tabla de clientes</h3>
-            <button class="boton-nuevo" type="submit">NUEVO</button>
+            <button class="boton-nuevo" type="submit" onclick="nuevoCliente();">NUEVO</button>
         </nav-tabla>
         <element> <!-- Tabla de nombres -->
             <bloque class="seccion-p" id="tabla-nombres">Id</bloque>
@@ -75,14 +75,14 @@
                 </espacio>
                 <espacio class="espacio-4">
                     <button  class="boton-set" type="submit">Eliminar</button>
-                    <button  class="boton-set" type="submit">Cerrar</button>
+                    <button  class="boton-set" type="submit" onclick="">Cerrar</button>
                     <button  class="boton-set" type="submit">Guardar</button>
                 </espacio>
             </form>
         </div>
 
         <div class="section-info">
-
+            <print>Clientes: <n id="num-clientes">0</n></print>
         </div>
     </div>
 
