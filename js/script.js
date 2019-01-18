@@ -85,8 +85,13 @@ function añadirFila(){
     //Options
     var nuevoBloque6 = document.createElement("bloque");
     nuevoBloque6.setAttribute("class","seccion-p");
-
     nuevaFila.appendChild(nuevoBloque6);
+
+    var nuevoBotonOpt = document.createElement("button");
+    nuevoBotonOpt.setAttribute("type","submit");
+    nuevoBotonOpt.setAttribute("class","boton-opciones");
+    nuevoBotonOpt.setAttribute("onclick","");
+    nuevoBloque6.appendChild(nuevoBotonOpt);
     
 
     tabla.appendChild(nuevaFila);
@@ -94,7 +99,7 @@ function añadirFila(){
 }
 
 function moveUp(){
-    
+
 }
 function moveDown(){
 
