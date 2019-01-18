@@ -3,7 +3,7 @@
     --color2: #ebebeb;
     --color3: #454a4f;
     --color4: #30373f;
-    --color5: #dfdfdf;
+    --color5: #e0e0ec;
     --color6: #07456f;
 }
 body{
@@ -53,7 +53,7 @@ header{
     align-items:center;
 }
 .section-info{
-    background:var(--color2);
+    background:var(--color5);
     width : 100%;
     height : 20%;
 }
@@ -173,13 +173,20 @@ espacio{
     align-items:flex-end;
     
 }
-.espacio-2{height: 45%;}
+.espacio-2{
+    height: 45%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items:center;
+    justify-content: center;
+    
+}
 .espacio-3{height: 18%;}
 .espacio-4{height: 8%;}
 
 .caja-comentario{
-    width:100%;
-    height:100%;
+    width:98%;
+    height:90%;
 }
 
 .boton-set{
@@ -201,4 +208,20 @@ espacio{
 .texto-base h3{
     font-size:1.7vw;
     color:rgb(186, 253, 195);
+}
+
+.espacio-2 div{
+    background:var(--color4);
+    color:var(--color5);
+    height: 30%;
+    width: 48.5%;
+    margin-top:5px;
+}
+
+.caja{
+    background:var(--color5);
+    height: 50%;
+    width: 98%;
+    margin-top:1vh;
+    
 }
