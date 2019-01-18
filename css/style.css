@@ -233,3 +233,20 @@ espacio{
 .cliente-fila{
     background:red;
 }
+
+.botones-mover{
+    display:flex;
+    flex-flow: column wrap;
+}
+
+.ima-up{
+    background-image: url("images/flecha-arriba.png");
+    background-color: #cccccc;
+    width: 100%;
+    height: 50%;
+}
+.ima-down{
+    background-image: url("images/flecha_abajo.png");
+    width: 100%;
+    height: 50%;
+}
