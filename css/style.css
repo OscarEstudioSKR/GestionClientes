@@ -108,14 +108,20 @@ nav-tabla h3{
 element{
     width:100%;
     height: 5%;
-
-
     display: flex;
     flex-flow: column no-wrap;
-    padding:0.3%;
+    padding:0.3%; 
 
-    
-    
+       
+}
+.element{
+    width:100%;
+    height: 5%;
+    display: flex;
+    flex-flow: column no-wrap;
+    padding:0.3%;  
+    background:none;
+    border:none;
 }
 
 #tabla-nombres{
@@ -124,12 +130,14 @@ element{
 }
 
 .seccion-comun{
+
     border-style: outset;
     background:var(--color3);
     border-width: 1px;
     margin:1px;
     display: flex;
     align-items: center;
+   
 }
 
 .seccion-p{
