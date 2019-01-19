@@ -5,6 +5,7 @@ var clientesCartera = [];
 
 
 (function(){
+    cerrarInfo();
     //nuevoCliente();
     //refresh();
     //refreshTabla();
@@ -33,7 +34,7 @@ function nuevoCliente(){
 
 function cambiarVistaCliente(){
     abrirInfo();
-    document.getElementById("cliente-nombre").innerText = cliente.nombre;
+    document.getElementById("cliente-nombre").value = cliente.nombre;
     document.getElementById("cliente-fecha").innerText = cliente.fechaLlegada;
     document.getElementById("cliente-telefono").value = cliente.telefono;
     document.getElementById("cliente-ciudad").value = cliente.ciudad;
@@ -123,9 +124,11 @@ function options(id){
 
 function cerrarInfo() {
     document.getElementById("vista-cliente").style.display="none";
+    document.getElementById("vista-apagada").style.display="";
 }
 function abrirInfo() {
     document.getElementById("vista-cliente").style.display="block";
+    document.getElementById("vista-apagada").style.display="none";
 }
 
 
@@ -165,10 +168,10 @@ function refrescarTabla(inicio){
 
 
 function guardarCliente() {
+    
     let filas = document.getElementsByName("elemento-fila");
      
-    cliente.nombre = document.getElementById("cliente-nombre").innerText;
-
+    cliente.nombre = document.getElementById("cliente-nombre").value;
     cliente.telefono = document.getElementById("cliente-telefono").value;
     cliente.ciudad = document.getElementById("cliente-ciudad").value;
     cliente.edad = document.getElementById("cliente-edad").value;
