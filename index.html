@@ -22,26 +22,26 @@
             <button class="boton-nuevo" onclick="nuevoCliente();">NUEVO</button>
         </nav-tabla>
         <element> <!-- Tabla de nombres -->
-            <bloque class="seccion-p" id="tabla-nombres">Id</bloque>
-            <bloque class="seccion-p" id="tabla-nombres">Tipo</bloque>
-            <bloque class="seccion-g" id="tabla-nombres">Nombre</bloque>
-            <bloque class="seccion-m" id="tabla-nombres">Correo</bloque>
-            <bloque class="seccion-p" id="tabla-nombres">Mover</bloque>
-            <bloque class="seccion-p" id="tabla-nombres">Ver</bloque>
+            <bloque class="seccion-comun seccion-b" id="tabla-nombres">Id</bloque>
+            <bloque class="seccion-comun seccion-p" id="tabla-nombres">Tipo</bloque>
+            <bloque class="seccion-comun seccion-g" id="tabla-nombres">Nombre</bloque>
+            <bloque class="seccion-comun seccion-m" id="tabla-nombres">Correo</bloque>
+            <bloque class="seccion-comun seccion-b" id="tabla-nombres">Mover</bloque>
+            <bloque class="seccion-comun seccion-b" id="tabla-nombres">Ver</bloque>
         </element>
 
         <!-- >   ESTRUCTURA DE FILA
 
         <element id="cliente-fila" name="elemento-fila">
-            <bloque class="seccion-p id">1</bloque>
-            <bloque class="seccion-p">2</bloque>
-            <bloque class="seccion-g">3</bloque>
-            <bloque class="seccion-m ">4</bloque>
-            <bloque class="seccion-p botones-mover">
+            <bloque class="seccion-comun seccion-b id">1</bloque>
+            <bloque class="seccion-comun seccion-p">2</bloque>
+            <bloque class="seccion-comun seccion-g">3</bloque>
+            <bloque class="seccion-comun seccion-m ">4</bloque>
+            <bloque class="seccion-comun seccion-b botones-mover">
                 <button type="submit" class="ima-up" onclick="moveUp();"></button>
                 <button type="submit" class="ima-down" onclick="moveDown();"></button>  
             </bloque>
-            <bloque class="seccion-p">
+            <bloque class="seccion-comun seccion-b">
                 <button type="submit" class="boton-opciones" onclick="options()"></button>
             </bloque>
     
@@ -56,8 +56,8 @@
                 <espacio class="espacio-1">
                     <div class="imagen-cliente"></div>
                     <div class="texto-base">
-                        <input class="caja-nombre" type="tel" id="cliente-nombre" value="">
-                        <br><h4 id="cliente-fecha">27/08/2019</h4>
+                        <textarea class="caja-grande-nombre" type="text" id="cliente-nombre" value=""></textarea>
+                        <br><h4 id="cliente-fecha" style="font-size:1.5vh; text-align:right;">27/08/2019</h4>
                     </div>
                 </espacio>
                 <espacio class="espacio-2">
@@ -100,8 +100,6 @@
                 <n id="num-clientes">0</n>
                 <br>Id: 
                 <n id="cliente-id">0</n>
-                <br>Lista de clientes: 
-                <n id="lista-clientes">0</n>
             </print>
         </div>
     </div>

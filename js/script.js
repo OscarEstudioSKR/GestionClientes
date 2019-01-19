@@ -16,8 +16,6 @@ function refresh(){
     //Tabla blanca
     document.getElementById("num-clientes").innerText = clientesCartera.length;
     document.getElementById("cliente-id").innerText = cliente.id;
-    document.getElementById("lista-clientes").innerText = clientesCartera;
-
     
 }
 
@@ -33,7 +31,7 @@ function nuevoCliente(){
 function cambiarVistaCliente(){
     abrirInfo();
     document.getElementById("cliente-nombre").value = cliente.nombre;
-    document.getElementById("cliente-fecha").innerText = cliente.id;
+    document.getElementById("cliente-fecha").innerText = "Id: "+cliente.id;
     document.getElementById("cliente-telefono").value = cliente.telefono;
     document.getElementById("cliente-ciudad").value = cliente.ciudad;
     document.getElementById("cliente-edad").value = cliente.edad;
@@ -54,28 +52,28 @@ function añadirFila(){
     nuevaFila.setAttribute("name","elemento-fila");
     
     var nuevoBloque1 = document.createElement("bloque");
-    nuevoBloque1.setAttribute("class","seccion-p id");
+    nuevoBloque1.setAttribute("class","seccion-comun seccion-b id");
     nuevoBloque1.innerText = clientesCartera.length-1;
     nuevaFila.appendChild(nuevoBloque1);
 
     var nuevoBloque2 = document.createElement("bloque");
-    nuevoBloque2.setAttribute("class","seccion-p");
+    nuevoBloque2.setAttribute("class","seccion-comun seccion-p");
     nuevoBloque2.innerText = cliente.tipo;
     nuevaFila.appendChild(nuevoBloque2);
 
     var nuevoBloque3 = document.createElement("bloque");
-    nuevoBloque3.setAttribute("class","seccion-g");
+    nuevoBloque3.setAttribute("class","seccion-comun seccion-g");
     nuevoBloque3.innerText = cliente.nombre;
     nuevaFila.appendChild(nuevoBloque3);
 
     var nuevoBloque4 = document.createElement("bloque");
-    nuevoBloque4.setAttribute("class","seccion-m");
+    nuevoBloque4.setAttribute("class","seccion-comun seccion-m");
     nuevoBloque4.innerText = cliente.correo;
     nuevaFila.appendChild(nuevoBloque4);
 
     //Botones////////////////////////////
     var nuevoBloque5 = document.createElement("bloque");
-    nuevoBloque5.setAttribute("class","seccion-p botones-mover");
+    nuevoBloque5.setAttribute("class","seccion-comun seccion-b botones-mover");
     nuevaFila.appendChild(nuevoBloque5);
         //Boton1
     var nuevoBoton1 = document.createElement("button");
@@ -92,7 +90,7 @@ function añadirFila(){
 
     //Options
     var nuevoBloque6 = document.createElement("bloque");
-    nuevoBloque6.setAttribute("class","seccion-p");
+    nuevoBloque6.setAttribute("class","seccion-comun seccion-b");
     nuevaFila.appendChild(nuevoBloque6);
 
     var nuevoBotonOpt = document.createElement("button");
