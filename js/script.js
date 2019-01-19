@@ -6,9 +6,7 @@ var clientesCartera = [];
 
 (function(){
     cerrarInfo();
-    //nuevoCliente();
-    //refresh();
-    //refreshTabla();
+
 })();
 
 
@@ -35,7 +33,7 @@ function nuevoCliente(){
 function cambiarVistaCliente(){
     abrirInfo();
     document.getElementById("cliente-nombre").value = cliente.nombre;
-    document.getElementById("cliente-fecha").innerText = cliente.fechaLlegada;
+    document.getElementById("cliente-fecha").innerText = cliente.id;
     document.getElementById("cliente-telefono").value = cliente.telefono;
     document.getElementById("cliente-ciudad").value = cliente.ciudad;
     document.getElementById("cliente-edad").value = cliente.edad;
@@ -86,11 +84,11 @@ function añadirFila(){
     nuevoBoton1.setAttribute("onclick","moveUp("+cliente.id+")");
     nuevoBloque5.appendChild(nuevoBoton1);
         //Boton2
-    var nuevoBoton1 = document.createElement("button");
-    nuevoBoton1.setAttribute("type","submit");
-    nuevoBoton1.setAttribute("class","ima-down");
-    nuevoBoton1.setAttribute("onclick","moveDown("+cliente.id+")");
-    nuevoBloque5.appendChild(nuevoBoton1);
+    var nuevoBoton2 = document.createElement("button");
+    nuevoBoton2.setAttribute("type","submit");
+    nuevoBoton2.setAttribute("class","ima-down");
+    nuevoBoton2.setAttribute("onclick","moveDown("+cliente.id+")");
+    nuevoBloque5.appendChild(nuevoBoton2);
 
     //Options
     var nuevoBloque6 = document.createElement("bloque");
@@ -109,14 +107,50 @@ function añadirFila(){
 }
 
 function moveUp(id){
+    if(id > 0){
+        let temp = clientesCartera[id-1];
+        clientesCartera[id-1] = clientesCartera[id];
+        clientesCartera[id] = temp;
+        refrescarTabla(id-1, id);
+        cliente=clientesCartera[id-1];
+        cambiarVistaCliente();
 
+        let filas = document.getElementsByName("elemento-fila");      
+        filas[id-1].children[1].innerHTML = cliente.tipo;
+        filas[id-1].children[2].innerHTML = cliente.nombre;
+        filas[id-1].children[3].innerHTML = cliente.correo;
+
+        filas[id].children[1].innerHTML = clientesCartera[id].tipo;
+        filas[id].children[2].innerHTML = clientesCartera[id].nombre;
+        filas[id].children[3].innerHTML = clientesCartera[id].correo;
+    }
 }
 function moveDown(id){
+    let tempId=id;
+    if(id < clientesCartera.length-1){
+        let temp2 = clientesCartera[id+1];
+        clientesCartera[id+1] = clientesCartera[id];
+        clientesCartera[id] = temp2;
+        refrescarTabla(id, id+1);
+        cliente=clientesCartera[id+1];
+        cliente.id++;
+        cambiarVistaCliente();
 
+        let filas = document.getElementsByName("elemento-fila");
+        
+        filas[id+1].children[1].innerHTML = cliente.tipo;
+        filas[id+1].children[2].innerHTML = cliente.nombre;
+        filas[id+1].children[3].innerHTML = cliente.correo;
+
+        filas[id].children[1].innerHTML = clientesCartera[id].tipo;
+        filas[id].children[2].innerHTML = clientesCartera[id].nombre;
+        filas[id].children[3].innerHTML = clientesCartera[id].correo;
+
+        console.log(clientesCartera[id+1]);
+    }
 }
 
 function options(id){
-    console.log(id);
     cliente=clientesCartera[id];
     cambiarVistaCliente();
 }
@@ -142,7 +176,7 @@ function eliminarCliente() {
         if(filas[i].firstChild.innerText == cliente.id){
             clientesCartera.splice(i,1); 
             document.getElementById("tabla-clientes").removeChild(filas[i]);
-            refrescarTabla(i);
+            refrescarTabla(i,filas.length);
                  
 
         }
@@ -153,14 +187,17 @@ function eliminarCliente() {
 }
 
 
-function refrescarTabla(inicio){
+function refrescarTabla(inicio, fin){
     let filas = document.getElementsByName("elemento-fila");
-    for (let i = inicio; i < filas.length; i++) {
+    for (let i = inicio; i < fin; i++) {
         filas[i].firstChild.innerText = i;
         clientesCartera[i].id=i;
         filas[i].lastChild.firstChild.setAttribute("onclick","options("+i+")");
         filas[i].children[4].firstChild.setAttribute("onclick","moveUp("+i+")");
         filas[i].children[4].lastChild.setAttribute("onclick","moveDown("+i+")");
+
+
+
     }
 }
 
