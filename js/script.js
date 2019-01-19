@@ -4,10 +4,6 @@ let cliente;
 var clientesCartera = [];
 
 
-
-
-
-
 (function(){
     //nuevoCliente();
     //refresh();
@@ -17,10 +13,12 @@ var clientesCartera = [];
 
 
 function refresh(){
-    //Numero de clientes
+
+    //Tabla blanca
     document.getElementById("num-clientes").innerText = clientesCartera.length;
     document.getElementById("cliente-id").innerText = cliente.id;
     document.getElementById("lista-clientes").innerText = clientesCartera;
+
     
 }
 
@@ -35,27 +33,19 @@ function nuevoCliente(){
 
 function cambiarVistaCliente(){
     abrirInfo();
-    document.getElementById("cliente-nombre").innerText = cliente.nombre+" #"+cliente.id;
+    document.getElementById("cliente-nombre").innerText = cliente.nombre;
     document.getElementById("cliente-fecha").innerText = cliente.fechaLlegada;
-    document.getElementById("cliente-telefono").placeholder = cliente.telefono;
-    document.getElementById("cliente-ciudad").placeholder = cliente.ciudad;
-    document.getElementById("cliente-edad").placeholder = cliente.edad;
-    document.getElementById("cliente-correo").placeholder = cliente.correo;
-    document.getElementById("cliente-sexo").placeholder = cliente.sexo;
-    document.getElementById("cliente-tipo").placeholder = cliente.tipo;
-    document.getElementById("cliente-comentario").placeholder = cliente.comentario;
+    document.getElementById("cliente-telefono").value = cliente.telefono;
+    document.getElementById("cliente-ciudad").value = cliente.ciudad;
+    document.getElementById("cliente-edad").value = cliente.edad;
+    document.getElementById("cliente-correo").value = cliente.correo;
+    document.getElementById("cliente-sexo").value = cliente.sexo;
+    document.getElementById("cliente-tipo").value = cliente.tipo;
+    document.getElementById("cliente-comentario").value = cliente.comentario;
     refresh();
   
 }
-/*function refreshTabla(){
-    for(let i=0; i<clientesCartera.length;i++){
-        document.getElementById("cliente-fila").delete;
-    }
-    for(let i=0; i<clientesCartera.length;i++){
-        cliente = clientesCartera[i];
-        añadirFila();
-    }
-}*/
+
 
 function añadirFila(){
     let tabla = document.getElementById("tabla-clientes");
@@ -92,13 +82,13 @@ function añadirFila(){
     var nuevoBoton1 = document.createElement("button");
     nuevoBoton1.setAttribute("type","submit");
     nuevoBoton1.setAttribute("class","ima-up");
-    nuevoBoton1.setAttribute("onclick","moveUp");
+    nuevoBoton1.setAttribute("onclick","moveUp("+cliente.id+")");
     nuevoBloque5.appendChild(nuevoBoton1);
         //Boton2
     var nuevoBoton1 = document.createElement("button");
     nuevoBoton1.setAttribute("type","submit");
     nuevoBoton1.setAttribute("class","ima-down");
-    nuevoBoton1.setAttribute("onclick","moveDown");
+    nuevoBoton1.setAttribute("onclick","moveDown("+cliente.id+")");
     nuevoBloque5.appendChild(nuevoBoton1);
 
     //Options
@@ -117,10 +107,10 @@ function añadirFila(){
 
 }
 
-function moveUp(){
+function moveUp(id){
 
 }
-function moveDown(){
+function moveDown(id){
 
 }
 
@@ -166,6 +156,8 @@ function refrescarTabla(inicio){
         filas[i].firstChild.innerText = i;
         clientesCartera[i].id=i;
         filas[i].lastChild.firstChild.setAttribute("onclick","options("+i+")");
+        filas[i].children[4].firstChild.setAttribute("onclick","moveUp("+i+")");
+        filas[i].children[4].lastChild.setAttribute("onclick","moveDown("+i+")");
     }
 }
 
@@ -173,16 +165,24 @@ function refrescarTabla(inicio){
 
 
 function guardarCliente() {
+    let filas = document.getElementsByName("elemento-fila");
      
     cliente.nombre = document.getElementById("cliente-nombre").innerText;
 
-    cliente.telefono = document.getElementById("cliente-telefono").placeholder;
-    cliente.ciudad = document.getElementById("cliente-ciudad").placeholder;
-    cliente.edad = document.getElementById("cliente-edad").placeholder;
-    cliente.correo = document.getElementById("cliente-correo").placeholder;
-    cliente.sexo = document.getElementById("cliente-sexo").placeholder;
-    cliente.tipo = document.getElementById("cliente-tipo").placeholder;
-    cliente.comentario = document.getElementById("cliente-comentario").placeholder;
+    cliente.telefono = document.getElementById("cliente-telefono").value;
+    cliente.ciudad = document.getElementById("cliente-ciudad").value;
+    cliente.edad = document.getElementById("cliente-edad").value;
+    cliente.correo = document.getElementById("cliente-correo").value;
+    cliente.sexo = document.getElementById("cliente-sexo").value;
+    cliente.tipo = document.getElementById("cliente-tipo").value;
+    cliente.comentario = document.getElementById("cliente-comentario").value;
 
+    clientesCartera[cliente.id] = cliente;
+
+    filas[cliente.id].children[1].innerHTML = cliente.tipo;
+    filas[cliente.id].children[2].innerHTML = cliente.nombre;
+    filas[cliente.id].children[3].innerHTML = cliente.correo;
+    
     refresh();
+    cerrarInfo();
 }
