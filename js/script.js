@@ -1,6 +1,6 @@
 'use strict';
 //Array con todos los objetos cliente
-var cliente = new Cliente(0,"regular","sin nombre","correo@web.com", 666666666,"sin ciudad",99,"sin sexo","Hoy","sin comentarios");
+let cliente;
 var clientesCartera = [];
 
 
@@ -9,8 +9,8 @@ var clientesCartera = [];
 
 
 (function(){
-    nuevoCliente();
-    refresh();
+    //nuevoCliente();
+    //refresh();
     //refreshTabla();
 })();
 
@@ -20,6 +20,7 @@ function refresh(){
     //Numero de clientes
     document.getElementById("num-clientes").innerText = clientesCartera.length;
     document.getElementById("cliente-id").innerText = cliente.id;
+    document.getElementById("lista-clientes").innerText = clientesCartera;
     
 }
 
@@ -34,7 +35,7 @@ function nuevoCliente(){
 
 function cambiarVistaCliente(){
     abrirInfo();
-    document.getElementById("cliente-nombre").innerText = cliente.nombre;
+    document.getElementById("cliente-nombre").innerText = cliente.nombre+" #"+cliente.id;
     document.getElementById("cliente-fecha").innerText = cliente.fechaLlegada;
     document.getElementById("cliente-telefono").placeholder = cliente.telefono;
     document.getElementById("cliente-ciudad").placeholder = cliente.ciudad;
@@ -46,7 +47,7 @@ function cambiarVistaCliente(){
     refresh();
   
 }
-function refreshTabla(){
+/*function refreshTabla(){
     for(let i=0; i<clientesCartera.length;i++){
         document.getElementById("cliente-fila").delete;
     }
@@ -54,7 +55,8 @@ function refreshTabla(){
         cliente = clientesCartera[i];
         añadirFila();
     }
-}
+}*/
+
 function añadirFila(){
     let tabla = document.getElementById("tabla-clientes");
 
@@ -123,6 +125,7 @@ function moveDown(){
 }
 
 function options(id){
+    console.log(id);
     cliente=clientesCartera[id];
     cambiarVistaCliente();
 }
@@ -135,24 +138,39 @@ function abrirInfo() {
     document.getElementById("vista-cliente").style.display="block";
 }
 
-function eliminarCliente() {
 
+function eliminarCliente() {
 
     let filas = document.getElementsByName("elemento-fila");
 
     for (let i = 0; i < filas.length; i++) {
+
+        
         if(filas[i].firstChild.innerText == cliente.id){
+            clientesCartera.splice(i,1); 
+            document.getElementById("tabla-clientes").removeChild(filas[i]);
+            refrescarTabla(i);
+                 
 
-            document.getElementById("tabla-clientes").removeChild(filas[i]);            
         }
-    }
-
-    clientesCartera.splice(cliente.id,1);
+    }  
     cerrarInfo();
-    refresh();
-
-
+    refresh(); 
+    
 }
+
+
+function refrescarTabla(inicio){
+    let filas = document.getElementsByName("elemento-fila");
+    for (let i = inicio; i < filas.length; i++) {
+        filas[i].firstChild.innerText = i;
+        clientesCartera[i].id=i;
+        filas[i].lastChild.firstChild.setAttribute("onclick","options("+i+")");
+    }
+}
+
+
+
 
 function guardarCliente() {
      
